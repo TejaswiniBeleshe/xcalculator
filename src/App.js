@@ -14,25 +14,25 @@ function App() {
       if(!exp.length){
         console.log(exp);
         setAns('Error');
-      }else if(id === 'C'){
-        setExp('');
-        setAns('')
       }else if(exp.charAt(exp.length-1)===0 && exp.charAt(exp.length-2)==='/'){
         setAns('Infinity')
       }else{
         let res = eval(exp);
         setAns(res);
       }
-    }else{
+    }else if(id === 'C'){
+      setExp('');
+      setAns('');
+    }
+    else{
       setExp(prev=>prev+id)
-      
     }
   }
   
   return (
     <div className="App">
       <h1>React Calculator</h1><br/>
-      <input value={exp}  readOnly/>
+      <input type='text' id='input' value={exp}  readOnly/>
       <div className='ans'>{ans}</div>
       <div className='btns' onClick={(e)=>handle(e)}>
         {
